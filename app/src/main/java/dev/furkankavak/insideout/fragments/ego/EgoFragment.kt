@@ -50,7 +50,7 @@ class EgoFragment : Fragment() {
     private fun initializeBottomNav(){
         bottomNav = (activity as MainActivity).getBottomNavigation()
         navController = (activity as MainActivity).getNavController()
-        addBottomNavItem(R.id.egoFragment, "Ego", R.drawable.ic_android_black_24dp, null)
+        addBottomNavItem(R.id.egoFragment, "Sleep", R.drawable.ic_sleep, null)
     }
 
     private fun addBottomNavItem(fragmentId: Int, title: String, iconRes: Int, switchId : CompoundButton?) {
@@ -104,19 +104,19 @@ class EgoFragment : Fragment() {
         checkSwitchStates()
 
         viewModel.isGivingEnabled.observe(viewLifecycleOwner) { isEnabled ->
-            handleSwitchStateChange(isEnabled, R.id.givingFragment, "Giving", R.drawable.ic_android_black_24dp, binding.switchGiving)
+            handleSwitchStateChange(isEnabled, R.id.givingFragment, "Embarrassment", R.drawable.ic_embarrassment, binding.switchGiving)
         }
         viewModel.isHappinessEnabled.observe(viewLifecycleOwner) { isEnabled ->
-            handleSwitchStateChange(isEnabled, R.id.happinessFragment, "Happiness", R.drawable.ic_android_black_24dp, binding.switchHappiness)
+            handleSwitchStateChange(isEnabled, R.id.happinessFragment, "Sadness", R.drawable.ic_sadness, binding.switchHappiness)
         }
         viewModel.isKindnessEnabled.observe(viewLifecycleOwner) { isEnabled ->
-            handleSwitchStateChange(isEnabled, R.id.kindnessFragment, "Kindness", R.drawable.ic_android_black_24dp, binding.switchKindness)
+            handleSwitchStateChange(isEnabled, R.id.kindnessFragment, "Anxiety", R.drawable.ic_anxiety, binding.switchKindness)
         }
         viewModel.isOptimismEnabled.observe(viewLifecycleOwner) { isEnabled ->
-            handleSwitchStateChange(isEnabled, R.id.optimismFragment, "Optimism", R.drawable.ic_android_black_24dp, binding.switchOptimism)
+            handleSwitchStateChange(isEnabled, R.id.optimismFragment, "Anger", R.drawable.ic_anger, binding.switchOptimism)
         }
         viewModel.isRespectEnabled.observe(viewLifecycleOwner) { isEnabled ->
-            handleSwitchStateChange(isEnabled, R.id.respectFragment, "Respect", R.drawable.ic_android_black_24dp, binding.switchRespect)
+            handleSwitchStateChange(isEnabled, R.id.respectFragment, "Fear", R.drawable.ic_fear, binding.switchRespect)
         }
 
     }
@@ -183,7 +183,7 @@ class EgoFragment : Fragment() {
             }
         }
         if (!bottomNavItems.contains(R.id.egoFragment)){
-            bottomNav.menu.add(R.id.egoFragment, R.id.egoFragment, Menu.NONE, "Ego").setIcon(R.drawable.ic_android_black_24dp)
+            bottomNav.menu.add(R.id.egoFragment, R.id.egoFragment, Menu.NONE, "Sleep").setIcon(R.drawable.ic_android_black_24dp)
         }
 
         bottomNavItems.clear()

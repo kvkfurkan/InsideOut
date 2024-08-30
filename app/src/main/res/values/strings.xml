@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">InsideOut</string>
-    <string name="happiness">Happiness</string>
-    <string name="optimism">Optimism</string>
-    <string name="kindness">Kindness</string>
-    <string name="giving">Giving</string>>
-    <string name="respect">Respect</string>
-    <string name="ego">Ego</string>
+    <string name="sadness">Sadness</string>
+    <string name="anger">Anger</string>
+    <string name="anxiety">Anxiety</string>
+    <string name="embarrassment">Embarrassment</string>>
+    <string name="fear">Fear</string>
+    <string name="sleep">Sleep</string>
 </resources>
