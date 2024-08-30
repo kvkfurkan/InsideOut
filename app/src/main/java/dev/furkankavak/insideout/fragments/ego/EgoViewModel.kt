@@ -1,5 +1,6 @@
 package dev.furkankavak.insideout.fragments.ego
 
+import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -46,23 +47,23 @@ class EgoViewModel : ViewModel() {
         }
     }
 
-    fun onHappinessSwitchChanged(isEnabled: Boolean) {
+    fun onHappinessSwitchChanged(isEnabled: Boolean, switchId: CompoundButton) {
         _isHappinessEnabled.value = isEnabled
     }
 
-    fun onKindnessSwitchChanged(isEnabled: Boolean) {
+    fun onKindnessSwitchChanged(isEnabled: Boolean, switchId: CompoundButton) {
         _isKindnessEnabled.value = isEnabled
     }
 
-    fun onGivingSwitchChanged(isEnabled: Boolean) {
+    fun onGivingSwitchChanged(isEnabled: Boolean, switchId: CompoundButton) {
         _isGivingEnabled.value = isEnabled
     }
 
-    fun onOptimismSwitchChanged(isEnabled: Boolean) {
+    fun onOptimismSwitchChanged(isEnabled: Boolean, switchId: CompoundButton) {
         _isOptimismEnabled.value = isEnabled
     }
 
-    fun onRespectSwitchChanged(isEnabled: Boolean) {
+    fun onRespectSwitchChanged(isEnabled: Boolean, switchId: CompoundButton) {
         _isRespectEnabled.value = isEnabled
     }
 

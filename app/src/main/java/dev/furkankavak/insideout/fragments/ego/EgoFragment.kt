@@ -1,11 +1,13 @@
 package dev.furkankavak.insideout.fragments.ego
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -33,9 +35,9 @@ class EgoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initializeBottomNav()
         updateSwitchStates(viewModel.isEgoEnabled.value ?: true)
         egoSwitchObservable()
-        initializeBottomNav()
         observeSwitches()
 
     }
@@ -48,12 +50,12 @@ class EgoFragment : Fragment() {
     private fun initializeBottomNav(){
         bottomNav = (activity as MainActivity).getBottomNavigation()
         navController = (activity as MainActivity).getNavController()
-        addBottomNavItem(R.id.egoFragment, "Ego", R.drawable.ic_android_black_24dp)
+        addBottomNavItem(R.id.egoFragment, "Ego", R.drawable.ic_android_black_24dp, null)
     }
 
-    private fun addBottomNavItem(fragmentId: Int, title: String, iconRes: Int) {
+    private fun addBottomNavItem(fragmentId: Int, title: String, iconRes: Int, switchId : CompoundButton?) {
         if (bottomNavItems.contains(fragmentId)) {
-            return // Eğer item zaten eklenmişse, fonksiyonu sonlandır
+            return
         }
         if (bottomNavItems.size < 5) {
             if (bottomNav.menu.findItem(fragmentId) == null) {
@@ -61,6 +63,7 @@ class EgoFragment : Fragment() {
                 bottomNavItems.add(fragmentId)
             }
         } else {
+            switchId?.isChecked = false
             Toast.makeText(requireContext(), "Maximum 5 items allowed in the Bottom Navigation.", Toast.LENGTH_SHORT).show()
         }
     }
@@ -78,7 +81,11 @@ class EgoFragment : Fragment() {
             binding.switchKindness.isClickable = false
             binding.switchOptimism.isClickable = false
             binding.switchRespect.isClickable = false
+            clearBottomNavItems()
+            Log.e("SwitchHappiness", "bottomNavItems: ${bottomNavItems.size}")
+
         } else {
+
             binding.switchGiving.isClickable = true
             binding.switchHappiness.isClickable = true
             binding.switchKindness.isClickable = true
@@ -97,49 +104,54 @@ class EgoFragment : Fragment() {
         checkSwitchStates()
 
         viewModel.isGivingEnabled.observe(viewLifecycleOwner) { isEnabled ->
-            handleSwitchStateChange(isEnabled, R.id.givingFragment, "Giving", R.drawable.ic_android_black_24dp)
+            handleSwitchStateChange(isEnabled, R.id.givingFragment, "Giving", R.drawable.ic_android_black_24dp, binding.switchGiving)
         }
         viewModel.isHappinessEnabled.observe(viewLifecycleOwner) { isEnabled ->
-            handleSwitchStateChange(isEnabled, R.id.happinessFragment, "Happiness", R.drawable.ic_android_black_24dp)
+            handleSwitchStateChange(isEnabled, R.id.happinessFragment, "Happiness", R.drawable.ic_android_black_24dp, binding.switchHappiness)
         }
         viewModel.isKindnessEnabled.observe(viewLifecycleOwner) { isEnabled ->
-            handleSwitchStateChange(isEnabled, R.id.kindnessFragment, "Kindness", R.drawable.ic_android_black_24dp)
+            handleSwitchStateChange(isEnabled, R.id.kindnessFragment, "Kindness", R.drawable.ic_android_black_24dp, binding.switchKindness)
         }
         viewModel.isOptimismEnabled.observe(viewLifecycleOwner) { isEnabled ->
-            handleSwitchStateChange(isEnabled, R.id.optimismFragment, "Optimism", R.drawable.ic_android_black_24dp)
+            handleSwitchStateChange(isEnabled, R.id.optimismFragment, "Optimism", R.drawable.ic_android_black_24dp, binding.switchOptimism)
         }
         viewModel.isRespectEnabled.observe(viewLifecycleOwner) { isEnabled ->
-            handleSwitchStateChange(isEnabled, R.id.respectFragment, "Respect", R.drawable.ic_android_black_24dp)
+            handleSwitchStateChange(isEnabled, R.id.respectFragment, "Respect", R.drawable.ic_android_black_24dp, binding.switchRespect)
         }
 
     }
 
     private fun checkSwitchStates(){
-        binding.switchHappiness.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onHappinessSwitchChanged(isChecked)
+        binding.switchHappiness.setOnCheckedChangeListener { switchId, isChecked ->
+            viewModel.onHappinessSwitchChanged(isChecked,switchId)
+            Log.e("SwitchHappiness", "bottomNavItems: ${bottomNavItems.size}")
         }
 
-        binding.switchKindness.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onKindnessSwitchChanged(isChecked)
+        binding.switchKindness.setOnCheckedChangeListener { switchId, isChecked ->
+            viewModel.onKindnessSwitchChanged(isChecked,switchId)
+            Log.e("SwitchHappiness", "bottomNavItems: ${bottomNavItems.size}")
         }
 
-        binding.switchOptimism.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onOptimismSwitchChanged(isChecked)
+        binding.switchOptimism.setOnCheckedChangeListener { switchId, isChecked ->
+            viewModel.onOptimismSwitchChanged(isChecked,switchId)
+            Log.e("SwitchHappiness", "bottomNavItems: ${bottomNavItems.size}")
         }
 
-        binding.switchRespect.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onRespectSwitchChanged(isChecked)
+        binding.switchRespect.setOnCheckedChangeListener { switchId, isChecked ->
+            viewModel.onRespectSwitchChanged(isChecked,switchId)
+            Log.e("SwitchHappiness", "bottomNavItems: ${bottomNavItems.size}")
         }
 
-        binding.switchGiving.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onGivingSwitchChanged(isChecked)
+        binding.switchGiving.setOnCheckedChangeListener { switchId, isChecked ->
+            viewModel.onGivingSwitchChanged(isChecked,switchId)
+            Log.e("SwitchHappiness", "bottomNavItems: ${bottomNavItems.size}")
         }
 
     }
 
-    private fun handleSwitchStateChange(isEnabled: Boolean, fragmentId: Int, title: String, iconRes: Int) {
+    private fun handleSwitchStateChange(isEnabled: Boolean, fragmentId: Int, title: String, iconRes: Int, switchId : CompoundButton) {
             if (isEnabled) {
-                addBottomNavItem(fragmentId, title, iconRes)
+                addBottomNavItem(fragmentId, title, iconRes,switchId)
             } else {
                 removeBottomNavItem(fragmentId)
             }
@@ -170,11 +182,17 @@ class EgoFragment : Fragment() {
                 bottomNav.menu.removeItem(itemId)
             }
         }
+        if (!bottomNavItems.contains(R.id.egoFragment)){
+            bottomNav.menu.add(R.id.egoFragment, R.id.egoFragment, Menu.NONE, "Ego").setIcon(R.drawable.ic_android_black_24dp)
+        }
+
         bottomNavItems.clear()
+        bottomNavItems.add(R.id.egoFragment)
     }
 
     private fun removeBottomNavItem(fragmentId: Int) {
         bottomNav.menu.removeItem(fragmentId)
+        bottomNavItems.remove(fragmentId)
     }
 
     override fun onDestroyView() {
