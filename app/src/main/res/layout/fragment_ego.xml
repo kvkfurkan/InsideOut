@@ -7,6 +7,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ego.EgoFragment">
 
+    <ImageView
+        android:id="@+id/ivPoster"
+        android:layout_width="184dp"
+        android:layout_height="316dp"
+        android:src="@drawable/inside_out"
+        app:layout_constraintBottom_toTopOf="@id/switchOptimism"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Switch
         android:id="@+id/switchHappiness"
         android:layout_marginHorizontal="64dp"

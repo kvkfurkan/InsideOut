@@ -1,7 +1,6 @@
 package dev.furkankavak.insideout.fragments.ego
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -82,7 +81,6 @@ class EgoFragment : Fragment() {
             binding.switchOptimism.isClickable = false
             binding.switchRespect.isClickable = false
             clearBottomNavItems()
-            Log.e("SwitchHappiness", "bottomNavItems: ${bottomNavItems.size}")
 
         } else {
 
@@ -124,27 +122,22 @@ class EgoFragment : Fragment() {
     private fun checkSwitchStates(){
         binding.switchHappiness.setOnCheckedChangeListener { switchId, isChecked ->
             viewModel.onHappinessSwitchChanged(isChecked,switchId)
-            Log.e("SwitchHappiness", "bottomNavItems: ${bottomNavItems.size}")
         }
 
         binding.switchKindness.setOnCheckedChangeListener { switchId, isChecked ->
             viewModel.onKindnessSwitchChanged(isChecked,switchId)
-            Log.e("SwitchHappiness", "bottomNavItems: ${bottomNavItems.size}")
         }
 
         binding.switchOptimism.setOnCheckedChangeListener { switchId, isChecked ->
             viewModel.onOptimismSwitchChanged(isChecked,switchId)
-            Log.e("SwitchHappiness", "bottomNavItems: ${bottomNavItems.size}")
         }
 
         binding.switchRespect.setOnCheckedChangeListener { switchId, isChecked ->
             viewModel.onRespectSwitchChanged(isChecked,switchId)
-            Log.e("SwitchHappiness", "bottomNavItems: ${bottomNavItems.size}")
         }
 
         binding.switchGiving.setOnCheckedChangeListener { switchId, isChecked ->
             viewModel.onGivingSwitchChanged(isChecked,switchId)
-            Log.e("SwitchHappiness", "bottomNavItems: ${bottomNavItems.size}")
         }
 
     }
