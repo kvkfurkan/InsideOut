@@ -1,6 +1,6 @@
-# Inside Out App
+# Inside Out 2 Quotes App
 
-The Inside Out App is an Android application designed to introduce and showcase the characters from the *Inside Out 2* animation film. Users can interact with various character switches to view quotes and play background music related to the characters.
+The Inside Out 2 Quotes App is an Android application designed to introduce and showcase the characters from the *Inside Out 2* animation film. Users can interact with various character switches to view quotes and play background music related to the characters.
 
 ## Features
 
@@ -75,3 +75,12 @@ Activity: 1.9.1
 ConstraintLayout: 2.1.4
 
 Navigation Fragment KTX: 2.7.7
+
+
+### Screenshot
+
+![Alt Text](https://imgtr.ee/images/2024/08/30/d1d192a75b0fb2b30785cd7c2269371c.png)
+
+![Alt Text](https://imgtr.ee/images/2024/08/30/ab55efa169ea76f69c87b557b63fefd5.png)
+
+![Alt Text](https://imgtr.ee/images/2024/08/30/d72a6c663b13fe865eea1154a61fb43e.png)
