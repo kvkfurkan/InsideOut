@@ -1,5 +1,6 @@
 package dev.furkankavak.insideout.fragments.ego
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,6 +24,8 @@ class EgoFragment : Fragment() {
     private lateinit var navController : NavController
     private val viewModel: EgoViewModel by viewModels()
     private val bottomNavItems = mutableListOf<Int>()
+    private lateinit var mediaPlayer: MediaPlayer
+    private lateinit var mediaPlayer2: MediaPlayer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +41,19 @@ class EgoFragment : Fragment() {
         updateSwitchStates(viewModel.isEgoEnabled.value ?: true)
         egoSwitchObservable()
         observeSwitches()
+
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.slow_down_dude)
+        mediaPlayer2 = MediaPlayer.create(requireContext(), R.raw.background_music)
+
+        binding.playButton.setOnClickListener {
+            if (!mediaPlayer.isPlaying) {
+                mediaPlayer2.start()
+            }
+        }
+
+        binding.pauseButton.setOnClickListener {
+                mediaPlayer2.pause()
+        }
 
     }
 
@@ -64,6 +80,7 @@ class EgoFragment : Fragment() {
         } else {
             switchId?.isChecked = false
             Toast.makeText(requireContext(), "Maximum 5 items allowed in the Bottom Navigation.", Toast.LENGTH_SHORT).show()
+            mediaPlayer.start()
         }
     }
 

@@ -1,5 +1,6 @@
 package dev.furkankavak.insideout.fragments
 
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,7 +17,7 @@ class HappinessFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHappinessBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -30,5 +31,7 @@ class HappinessFragment : Fragment() {
         Glide.with(this)
             .load(gifUrl)
             .into(imageView)
+
     }
+
 }
