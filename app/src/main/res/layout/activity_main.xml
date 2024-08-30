@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled"
         android:visibility="gone"/>
 
     <androidx.fragment.app.FragmentContainerView

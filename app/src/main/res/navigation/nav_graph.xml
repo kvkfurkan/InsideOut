@@ -15,4 +15,24 @@
         android:name="dev.furkankavak.insideout.fragments.HappinessFragment"
         android:label="fragment_happiness"
         tools:layout="@layout/fragment_happiness" />
+    <fragment
+        android:id="@+id/givingFragment"
+        android:name="dev.furkankavak.insideout.fragments.GivingFragment"
+        android:label="fragment_giving"
+        tools:layout="@layout/fragment_giving" />
+    <fragment
+        android:id="@+id/kindnessFragment"
+        android:name="dev.furkankavak.insideout.fragments.KindnessFragment"
+        android:label="fragment_kindness"
+        tools:layout="@layout/fragment_kindness" />
+    <fragment
+        android:id="@+id/optimismFragment"
+        android:name="dev.furkankavak.insideout.fragments.OptimismFragment"
+        android:label="fragment_optimism"
+        tools:layout="@layout/fragment_optimism" />
+    <fragment
+        android:id="@+id/respectFragment"
+        android:name="dev.furkankavak.insideout.fragments.RespectFragment"
+        android:label="fragment_respect"
+        tools:layout="@layout/fragment_respect" />
 </navigation>

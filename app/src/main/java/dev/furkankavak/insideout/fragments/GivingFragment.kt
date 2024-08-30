@@ -9,6 +9,7 @@ import dev.furkankavak.insideout.R
 
 
 class GivingFragment : Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

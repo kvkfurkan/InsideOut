@@ -27,6 +27,9 @@ class EgoViewModel : ViewModel() {
     private val _isBottomNavVisible = MutableLiveData(false)
     val isBottomNavVisible: LiveData<Boolean> = _isBottomNavVisible
 
+    private val _clearBottomNavItems = MutableLiveData<Boolean>()
+    val clearBottomNavItems: LiveData<Boolean> = _clearBottomNavItems
+
     fun setBottomNavVisibility(isVisible: Boolean) {
         _isBottomNavVisible.value = isVisible
     }
@@ -39,6 +42,28 @@ class EgoViewModel : ViewModel() {
             _isKindnessEnabled.value = false
             _isOptimismEnabled.value = false
             _isRespectEnabled.value = false
+            _clearBottomNavItems.value = true
         }
     }
+
+    fun onHappinessSwitchChanged(isEnabled: Boolean) {
+        _isHappinessEnabled.value = isEnabled
+    }
+
+    fun onKindnessSwitchChanged(isEnabled: Boolean) {
+        _isKindnessEnabled.value = isEnabled
+    }
+
+    fun onGivingSwitchChanged(isEnabled: Boolean) {
+        _isGivingEnabled.value = isEnabled
+    }
+
+    fun onOptimismSwitchChanged(isEnabled: Boolean) {
+        _isOptimismEnabled.value = isEnabled
+    }
+
+    fun onRespectSwitchChanged(isEnabled: Boolean) {
+        _isRespectEnabled.value = isEnabled
+    }
+
 }
