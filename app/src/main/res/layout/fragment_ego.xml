@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.EgoFragment">
+    tools:context=".fragments.ego.EgoFragment">
 
     <Switch
-        android:id="@+id/switchHapiness"
+        android:id="@+id/switchHappiness"
         android:layout_marginHorizontal="64dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,9 +29,9 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginHorizontal="24dp"
-        app:layout_constraintTop_toBottomOf="@id/switchHapiness"
-        app:layout_constraintStart_toStartOf="@id/switchHapiness"
-        app:layout_constraintEnd_toEndOf="@id/switchHapiness"
+        app:layout_constraintTop_toBottomOf="@id/switchHappiness"
+        app:layout_constraintStart_toStartOf="@id/switchHappiness"
+        app:layout_constraintEnd_toEndOf="@id/switchHappiness"
         android:layout_marginVertical="16dp"/>
 
     <Switch
@@ -46,7 +46,7 @@
         tools:ignore="UseSwitchCompatOrMaterialXml"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/switchHapiness"/>
+        app:layout_constraintStart_toEndOf="@id/switchHappiness"/>
 
     <TextView
         android:id="@+id/tvOptimism"

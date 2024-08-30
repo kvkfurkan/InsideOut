@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/egoFragment"
-        android:name="dev.furkankavak.insideout.fragments.EgoFragment"
+        android:name="dev.furkankavak.insideout.fragments.ego.EgoFragment"
         android:label="fragment_ego"
         tools:layout="@layout/fragment_ego" />
     <fragment
