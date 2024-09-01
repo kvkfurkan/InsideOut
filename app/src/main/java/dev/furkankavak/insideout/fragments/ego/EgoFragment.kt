@@ -48,11 +48,23 @@ class EgoFragment : Fragment() {
         binding.playButton.setOnClickListener {
             if (!mediaPlayer.isPlaying) {
                 mediaPlayer2.start()
+                viewModel.setPlaying(true)
             }
         }
 
         binding.pauseButton.setOnClickListener {
+            if (mediaPlayer2.isPlaying) {
                 mediaPlayer2.pause()
+                viewModel.setPlaying(false)
+            }
+        }
+
+        viewModel.isPlaying.observe(viewLifecycleOwner) { isPlaying ->
+            if (isPlaying && !mediaPlayer2.isPlaying) {
+                mediaPlayer2.start()
+            } else if (!isPlaying && mediaPlayer2.isPlaying) {
+                mediaPlayer2.pause()
+            }
         }
 
     }
@@ -79,8 +91,11 @@ class EgoFragment : Fragment() {
             }
         } else {
             switchId?.isChecked = false
-            Toast.makeText(requireContext(), "Maximum 5 items allowed in the Bottom Navigation.", Toast.LENGTH_SHORT).show()
-            mediaPlayer.start()
+            if (viewModel.showToast.value != true) {
+                Toast.makeText(requireContext(), "Maximum 5 items allowed in the Bottom Navigation.", Toast.LENGTH_SHORT).show()
+                viewModel.setShowToast(true)
+                mediaPlayer.start()
+            }
         }
     }
 
@@ -203,6 +218,23 @@ class EgoFragment : Fragment() {
     private fun removeBottomNavItem(fragmentId: Int) {
         bottomNav.menu.removeItem(fragmentId)
         bottomNavItems.remove(fragmentId)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (mediaPlayer2.isPlaying) {
+            mediaPlayer2.pause()
+            viewModel.setPlaying(false)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (viewModel.isPlaying.value == true) {
+            mediaPlayer2.start()
+        }
+
+        viewModel.resetShowToast()
     }
 
     override fun onDestroyView() {

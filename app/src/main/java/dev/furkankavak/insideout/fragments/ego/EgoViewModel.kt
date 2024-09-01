@@ -31,6 +31,24 @@ class EgoViewModel : ViewModel() {
     private val _clearBottomNavItems = MutableLiveData<Boolean>()
     val clearBottomNavItems: LiveData<Boolean> = _clearBottomNavItems
 
+    private val _showToast = MutableLiveData(false)
+    val showToast: LiveData<Boolean> get() = _showToast
+
+    fun setShowToast(value: Boolean) {
+        _showToast.value = value
+    }
+
+    fun resetShowToast() {
+        _showToast.value = false
+    }
+
+    private val _isPlaying = MutableLiveData(false)
+    val isPlaying: LiveData<Boolean> get() = _isPlaying
+
+    fun setPlaying(value: Boolean) {
+        _isPlaying.value = value
+    }
+
     fun setBottomNavVisibility(isVisible: Boolean) {
         _isBottomNavVisible.value = isVisible
     }
