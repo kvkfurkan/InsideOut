@@ -6,4 +6,7 @@
     <string name="embarrassment">Embarrassment</string>>
     <string name="fear">Fear</string>
     <string name="sleep">Sleep</string>
+    <string name="play_music">Play Music</string>
+    <string name="stop_music">Stop Music</string>
+    <string name="image">image</string>
 </resources>
